@@ -43,8 +43,9 @@ def req_cbr(URL):
   resp = requests.get(URL).json()
   max_val = 0.0
   for key in resp['Valute'].keys():
-    if max_val < resp['Valute'][key]['Value'] / resp['Valute'][key]['Nominal']:
-      max_val = resp['Valute'][key]['Value'] / resp['Valute'][key]['Nominal']
+    cur_val = resp['Valute'][key]['Value'] / resp['Valute'][key]['Nominal']
+    if max_val < cur_val:
+      max_val = cur_val
       res = key
   return res
 
